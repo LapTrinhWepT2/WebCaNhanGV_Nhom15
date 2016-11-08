@@ -149,9 +149,9 @@ create table BinhLuan
     foreign key(MaKhoaHoc) references KhoaHoc(MaKhoaHoc),
     foreign key(UserID) references User(UserName)
 )
-insert into User values ('nguyenvana','123456789','Nguyễn Văn A','1996/01/01','Nam','Long An','TP.HCM','0986767676','nguyenvana@gmail.com','Còn hoạt động');
-insert into User values ('nguyenvanb','123456789','Nguyễn Văn B','1996/01/01','Nam','Long An','TP.HCM','0986767676','nguyenvana@gmail.com','Còn hoạt động');
-insert into User values ('nguyenvanc','123456789','Nguyễn Văn C','1996/01/01','Nam','Long An','TP.HCM','0986767676','nguyenvana@gmail.com','Còn hoạt động');
+insert into User values ('nguyenvana','123456789','Nguyen Van A','1996/01/01','Nam','Long An','TP.HCM','0986767676','nguyenvana@gmail.com','Còn hoạt động');
+insert into User values ('nguyenvanb','123456789','Nguyen Van B','1996/01/01','Nam','Long An','TP.HCM','0986767676','nguyenvana@gmail.com','Còn hoạt động');
+insert into User values ('nguyenvanc','123456789','Nguyen Van C','1996/01/01','Nam','Long An','TP.HCM','0986767676','nguyenvana@gmail.com','Còn hoạt động');
 
 insert into dangkykhoahoc values ('KH01','nguyenvana','2016-10-29','100000','Đã đóng');
 insert into dangkykhoahoc values ('KH02','nguyenvana','2016-10-29','100000','Đã đóng');
