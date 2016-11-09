@@ -1,4 +1,4 @@
-create database WebCaNhanGV
+﻿create database WebCaNhanGV
 use WebCaNhanGV
 
 create table User
@@ -100,7 +100,7 @@ create table LamBaiThi
 
 create table TaiLieu
 (
-	MaTaiLieu nvarchar(20),
+    MaTaiLieu nvarchar(20),
     TieuDe text,
     NoiDung text,
     NgayUp dateTime,
