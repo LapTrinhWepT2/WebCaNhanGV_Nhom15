@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="dao.UsersDao" %>
+<%@ page import="dao.UsersDao" %>
 <%@ page import="model.Users" %>
+<%@ page import="model.KhoaHoc" %>
+<%@ page import="dao.KhoaHocDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,29 +28,36 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<%} %>	
 	
+	<%
+		KhoaHocDAO khoahocDAO=new KhoaHocDAO();
+	%>
+	
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6 col-sm-8 col-xs-12">
+			<div class="col-md-7 col-sm-8 col-xs-12">
 				<table class= "table table-hover bangKhoaHoc">
 					<thead>
 						<tr class="info">
 							<th class="dskhoahoc_cell0">Các khóa học</th>
 							<th>Mô tả</th>
+							<th>Ngày bắt đầu</th>
+							<th>Ngày Kết Thúc</th>
 						</tr>
 					</thead>
 					<tbody>
+						<% for(KhoaHoc kh: khoahocDAO.getListKhoaHoc()){ %>
 						<tr>
-							<td><a href="">Lập trình Web</a></td>
-							<td>Lớp học trình web chiều thứ 2 hàng tuần /16 buổi. Ngày bắt đầu: 1/9/2016</td>							
+							<td><a href="KhoaHocCon.jsp?makhoahoc=<%=kh.getMakhoahoc()%>&tenkhoahoc=<%=kh.getTenkhoahoc()%>"><%=kh.getTenkhoahoc() %></a></td>
+							<td><%=kh.getMotakhoahoc() %></td>
+							<td><%=kh.getNgaybatdau() %></td>
+							<td><%=kh.getNgayketthuc() %></td>
+														
 						</tr>
-						<tr>
-							<td><a href="">Công nghệ phần mềm</a></td>
-							<td>Lớp công nghệ phần mềm sáng hàng tuần /16 buổi. Ngày bắt đầu: 1/9/2016</td>							
-						</tr>
+						<%} %>
 					</tbody>
 				</table>
 			</div>
-			<div class="col-md-6 col-sm-4 col-xs-12">
+			<div class="col-md-5 col-sm-4 col-xs-12">
 				<table class="table table-bordered bangThongBao">
 					<thead>
 						<tr>

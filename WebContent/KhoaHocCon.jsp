@@ -1,5 +1,10 @@
+<%@page import="model.KhoaHoc_DeThi"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="dao.DeThiDAO" %>
+<%@page import="model.DeThi"%>
+<%@ page import="dao.KhoaHocDAO" %>
+<%@page import="model.KhoaHoc"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +17,27 @@
 	<script src ="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+	<%
+		 KhoaHocDAO khoahocDAO=new KhoaHocDAO();      	
+		 String makhoahoc="";
+		if(request.getParameter("makhoahoc")!=null){
+			makhoahoc=request.getParameter("makhoahoc");
+		}
+		
+		String tenkhoahoc="";
+		if(request.getParameter("tenkhoahoc")!=null){
+			tenkhoahoc=request.getParameter("tenkhoahoc");
+		}
+		
+		
+		DeThiDAO dethiDAO=new DeThiDAO();
+	%>
 	<jsp:include page="header.jsp"></jsp:include>	
 	
 	<div class="container">
 	    <div class="row">
-	    	<h2><b>Lập trình web</b></h2>
+	    	<h2><b><%=tenkhoahoc %></b></h2>
 	        <div class="col-md-8 col-sm-12">
 	            <div class="panel-group">
 	                <div class="panel panel-primary">
@@ -75,10 +96,16 @@
 	        			Thi trắc nghiệm
 		        		</div>
 		        		<div class="panel-body">
-		        			<ul>
-		        				<li><a href="">Đề thi trắc nghiệm về tìm hiểu boostrap</a></li>
-		        				<li><a href="">Đề thi trắc nghiệm về tìm hiểu AJAX</a></li>
-		        			</ul>
+		        			<table class="table table-striped table-hover bangDeThi">
+								<tbody>
+									<%for(KhoaHoc_DeThi khdt: dethiDAO.getListDeThiWithKhoaHoc(makhoahoc)){ %>
+									<tr>
+										<td><a href="DeThiDemo.jsp?dethi=<%=khdt.getMadethi()%>&tendethi=<%=khdt.getTendethi()%>&timedethi=<%=khdt.getThoigian()%>"><span class="glyphicon glyphicon-pencil"></span><%=khdt.getTendethi() %></a></td>							
+									</tr>
+									<%}%>
+									
+								</tbody>	
+							</table>
 		        		</div>
 	        		</div>
 	        		<div class="panel panel-success">
